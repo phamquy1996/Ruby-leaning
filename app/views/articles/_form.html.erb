@@ -23,7 +23,16 @@
     <%= f.label :text %><br>
     <%= f.text_area :text %>
   </p>
- 
+  <%= f.fields_for :comments do |fm| %>
+    <p>
+      <%= fm.label :body %><br>
+      <%= fm.text_field :body %>
+   </p>
+   <p>
+      <%= fm.label :commenter %><br>
+      <%= fm.text_field :commenter %>
+   </p>
+  <% end %>
   <p>
     <%= f.submit %>
   </p>

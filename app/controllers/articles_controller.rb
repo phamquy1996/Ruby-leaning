@@ -10,6 +10,7 @@ class ArticlesController < ApplicationController
 
     def new
         @article = Article.new
+        @article.comments.new
     end
 
     def create
@@ -46,6 +47,10 @@ class ArticlesController < ApplicationController
 
     private
     def article_params
-        params.require(:article).permit(:title, :text)
+        params.require(:article).permit(:title, :text,
+            comments_attributes: [
+                :body, :commenter 
+            ]
+        )
     end
 end
